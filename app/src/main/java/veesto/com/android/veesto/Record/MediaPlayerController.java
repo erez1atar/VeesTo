@@ -139,6 +139,6 @@ public class MediaPlayerController implements IMediaPlayerContoller
 
     @Override
     public void setPresentor(IRecordPresentor presentor) {
-        iPresentorWeak = new WeakReference<IRecordPresentor>(presentor);
+        iPresentorWeak = new WeakReference<>(presentor);
     }
 }

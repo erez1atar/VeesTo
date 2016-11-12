@@ -11,7 +11,6 @@ public interface IModel {
     void setIMEI(String imei);
     void setSN(String SN);
 
-
     String getUserEmail();
     String getIMEI();
     String getSN();

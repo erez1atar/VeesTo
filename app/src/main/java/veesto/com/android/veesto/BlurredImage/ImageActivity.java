@@ -31,12 +31,10 @@ public class ImageActivity extends AppCompatActivity implements ClockEventListen
         setContentView(R.layout.activity_image);
 
         waitingText = (TextView)findViewById(R.id.image_text);
-
         progressBarController = new ProgressBarController(1,5,this);
 
         timePass = false;
         myClock = new MyClock(this);
-
 
         picture = (ImageView)findViewById(R.id.picture);
         progressBar = (ProgressBar)findViewById(R.id.progress_bar);

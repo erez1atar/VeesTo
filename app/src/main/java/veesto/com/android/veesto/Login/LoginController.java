@@ -22,8 +22,8 @@ public class LoginController implements ILoginController
         iModel = App.getModel();
     }
     @Override
-    public void setUserEmail(String email) {
-        Log.d("setUserEmail", email);
+    public void setUserEmail(String email)
+    {
         iModel.setUserEmail(email);
     }
 

@@ -59,7 +59,6 @@ public class FriendsListAdapter extends ArrayAdapter<String> {
         }
 
         holder.name.setText(friends.get(position));
-
         return convertView;
     }
 

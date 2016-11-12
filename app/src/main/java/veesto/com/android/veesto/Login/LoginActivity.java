@@ -65,7 +65,6 @@ public class LoginActivity extends AppCompatActivity {
 
         requestRuntimePermissions();
 
-
         Button moveOn = (Button)findViewById(R.id.move_to_menu);
         moveOn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,22 +98,21 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setReadPermissions("user_friends");
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
-            public void onSuccess(final LoginResult loginResult) {
+            public void onSuccess(final LoginResult loginResult)
+            {
                 executor.execute(new Runnable() {
                     @Override
                     public void run() {
 
                         getEmailAddress(loginResult);
-                        getListOfFriends(loginResult);
+                        getListOfFriends();
 
                     }
                 });
-
-
-
             }
 
-            private void getEmailAddress(LoginResult loginResult) {
+            private void getEmailAddress(LoginResult loginResult)
+            {
                 GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
 
                     @Override
@@ -155,9 +153,8 @@ public class LoginActivity extends AppCompatActivity {
                 request.executeAsync();
             }
 
-            private void getListOfFriends(LoginResult loginResult) {
-
-
+            private void getListOfFriends()
+            {
                 new GraphRequest(
                         AccessToken.getCurrentAccessToken(), "/me/friends", null, HttpMethod.GET,
                         new GraphRequest.Callback() {
@@ -183,8 +180,6 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                                 friendsUpdated = true;
                                 onLoginCompeleted();
-
-
                             }
                         }
                 ).executeAsync();
@@ -260,6 +255,4 @@ public class LoginActivity extends AppCompatActivity {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         return accessToken != null;
     }
-
-
 }

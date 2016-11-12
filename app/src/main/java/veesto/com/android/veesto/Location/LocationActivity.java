@@ -48,8 +48,8 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
         setContentView(R.layout.activity_location);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            // Check Permissions Now
+                != PackageManager.PERMISSION_GRANTED)
+        {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
                     PERMISSIONS_REQUEST_WIFI_ID);
@@ -59,7 +59,8 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
         listOfNetworks = (ListView) findViewById(R.id.list_of_networks);
 
         wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-        if (!wifi.isWifiEnabled()) {
+        if (!wifi.isWifiEnabled())
+        {
             wifi.setWifiEnabled(true);
         }
         receiver = new BroadcastReceiver() {
@@ -77,19 +78,16 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(GoogleMap googleMap)
+    {
         mMap = googleMap;
 
         mMap.setMyLocationEnabled(true);
+
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
-        // Creating a criteria object to retrieve provider
         Criteria criteria = new Criteria();
-
-        // Getting the name of the best provider
         String provider = locationManager.getBestProvider(criteria, true);
 
-        // Getting Current Location
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
         {
             return;
@@ -106,13 +104,15 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
 
 
     @Override
-    protected void onResume() {
+    protected void onResume()
+    {
         super.onResume();
         registerReceiver(receiver, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
     }
 
     @Override
-    protected void onPause() {
+    protected void onPause()
+    {
         super.onPause();
         unregisterReceiver(receiver);
     }
@@ -123,7 +123,6 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
             case PERMISSIONS_REQUEST_WIFI_ID: {
                 if (grantResults[0] != PackageManager.PERMISSION_GRANTED)
                 {
-                    Log.d("Home", "Permission Granted");
                     finish();
                 }
             }
