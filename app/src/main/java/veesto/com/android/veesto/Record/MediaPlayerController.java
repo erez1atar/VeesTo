@@ -11,7 +11,7 @@ import java.lang.ref.WeakReference;
 /**
  * Created by erez on 10/11/2016.
  */
-public class MediaPlayerController implements IMediaPlayerContoller
+public class MediaPlayerController implements IMediaPlayerContoller,MediaPlayer.OnCompletionListener
 {
     private MediaRecorder mRecorder = null;
     private MediaPlayer mPlayer = null;
@@ -35,6 +35,7 @@ public class MediaPlayerController implements IMediaPlayerContoller
         }
         mStartPlaying = true;
         mPlayer = new MediaPlayer();
+        mPlayer.setOnCompletionListener(this);
         try
         {
             mPlayer.setDataSource(mFileName);
@@ -140,5 +141,10 @@ public class MediaPlayerController implements IMediaPlayerContoller
     @Override
     public void setPresentor(IRecordPresentor presentor) {
         iPresentorWeak = new WeakReference<>(presentor);
+    }
+
+    @Override
+    public void onCompletion(MediaPlayer mp) {
+        stopPlaying();
     }
 }
