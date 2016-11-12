@@ -1,9 +1,11 @@
 package veesto.com.android.veesto.Record;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,10 +23,8 @@ public class RecordActivity extends AppCompatActivity implements IRecordPresento
     private MediaRecorder mRecorder = null;
     private MediaPlayer mPlayer = null;
 
-    boolean mStartRecording = true;
     private Button mRecordButton = null;
     private Button mPlayButton = null;
-    boolean mStartPlaying = true;
 
     private IMediaPlayerContoller iMediaPlayerContoller;
 
@@ -117,7 +117,6 @@ public class RecordActivity extends AppCompatActivity implements IRecordPresento
     @Override
     public void onStopRecording() {
         mRecordButton.setText("Start Rcording");
-
         mPlayButton.setEnabled(true);
     }
 }
