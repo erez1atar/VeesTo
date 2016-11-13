@@ -1,6 +1,8 @@
 package veesto.com.android.veesto.Record;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
@@ -13,15 +15,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 import veesto.com.android.veesto.R;
 
 public class RecordActivity extends AppCompatActivity implements IRecordPresentor
 {
 
     private static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE_ID = 2;
-
-    private MediaRecorder mRecorder = null;
-    private MediaPlayer mPlayer = null;
 
     private Button mRecordButton = null;
     private Button mPlayButton = null;
@@ -34,10 +35,10 @@ public class RecordActivity extends AppCompatActivity implements IRecordPresento
         super.onCreate(icicle);
         setContentView(R.layout.activity_record);
 
-        Log.d("getAudioSourceMax" ,"" + mRecorder.getAudioSourceMax());
-
         iMediaPlayerContoller = new MediaPlayerController();
+        showDialog();
         iMediaPlayerContoller.setPresentor(this);
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (getApplicationContext().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -84,17 +85,6 @@ public class RecordActivity extends AppCompatActivity implements IRecordPresento
     @Override
     public void onPause() {
         super.onPause();
-        if (mRecorder != null)
-        {
-            mRecorder.release();
-            mRecorder = null;
-        }
-
-        if (mPlayer != null)
-        {
-            mPlayer.release();
-            mPlayer = null;
-        }
     }
 
     @Override
@@ -121,4 +111,22 @@ public class RecordActivity extends AppCompatActivity implements IRecordPresento
         mRecordButton.setText(R.string.start_record_text);
         mPlayButton.setEnabled(true);
     }
+
+    private void showDialog()
+    {
+        AlertDialog.Builder builderSingle = new AlertDialog.Builder(RecordActivity.this);
+
+        builderSingle.setTitle("Select audio source");
+
+
+        builderSingle.setAdapter(new AudioSourcesAdapter(this, R.layout.audio_source_card, iMediaPlayerContoller.getAudioSources()), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                iMediaPlayerContoller.setAudioSource(which);
+
+            }
+        });
+        builderSingle.show();
+    }
+
 }
