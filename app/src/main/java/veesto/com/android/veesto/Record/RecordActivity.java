@@ -97,26 +97,26 @@ public class RecordActivity extends AppCompatActivity implements IRecordPresento
 
     @Override
     public void onStartPlaying() {
-        mPlayButton.setText("Stop");
+        mPlayButton.setText(R.string.stop_text);
         mRecordButton.setEnabled(false);
     }
 
     @Override
     public void onStopPlaying() {
-        mPlayButton.setText("Start Playing");
+        mPlayButton.setText(R.string.start_play_text);
         mRecordButton.setEnabled(true);
 
     }
 
     @Override
     public void onStartRecording() {
-        mRecordButton.setText("Stop");
+        mRecordButton.setText(R.string.stop_text);
         mPlayButton.setEnabled(false);
     }
 
     @Override
     public void onStopRecording() {
-        mRecordButton.setText("Start Rcording");
+        mRecordButton.setText(R.string.start_record_text);
         mPlayButton.setEnabled(true);
     }
 }
