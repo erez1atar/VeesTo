@@ -34,6 +34,8 @@ public class RecordActivity extends AppCompatActivity implements IRecordPresento
         super.onCreate(icicle);
         setContentView(R.layout.activity_record);
 
+        Log.d("getAudioSourceMax" ,"" + mRecorder.getAudioSourceMax());
+
         iMediaPlayerContoller = new MediaPlayerController();
         iMediaPlayerContoller.setPresentor(this);
 
