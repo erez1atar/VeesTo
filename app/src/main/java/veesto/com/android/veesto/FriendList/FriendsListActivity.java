@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import veesto.com.android.veesto.BlurredImage.ImageActivity;
+import veesto.com.android.veesto.BlurredPicture.BlurredPicActivity;
 import veesto.com.android.veesto.Data.IModel;
 import veesto.com.android.veesto.Location.LocationActivity;
 import veesto.com.android.veesto.R;
@@ -57,7 +58,7 @@ public class FriendsListActivity extends AppCompatActivity {
         moveToImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(FriendsListActivity.this, ImageActivity.class);
+                Intent intent = new Intent(FriendsListActivity.this, BlurredPicActivity.class);
                 startActivity(intent);
             }
         });
