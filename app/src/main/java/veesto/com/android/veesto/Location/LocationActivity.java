@@ -136,6 +136,7 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
 
     private void onWifiListReady(final List<ScanResult> networks)
     {
+        // get all available networks
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {

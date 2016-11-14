@@ -12,7 +12,7 @@ public interface IMediaPlayerContoller
 
     void setAudioSource(AudioSourceE source);
 
-    ArrayList<String> getAudioSources();
+    ArrayList<AudioSourceE> getAudioSources();
 
     void setPresentor(IRecordPresentor presentor);
 }

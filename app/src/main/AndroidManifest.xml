@@ -47,9 +47,6 @@
         <activity
             android:name=".Location.LocationActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".BlurredImage.ImageActivity"
-            android:screenOrientation="portrait"></activity>
 
         <activity android:name=".BlurredPicture.BlurredPicActivity"
             android:screenOrientation="portrait">

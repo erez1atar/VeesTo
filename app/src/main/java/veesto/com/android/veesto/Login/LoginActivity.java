@@ -125,7 +125,6 @@ public class LoginActivity extends AppCompatActivity {
                             contoller.setUserEmail(firstName + lastName);
                         } catch (JSONException e) {
                             e.printStackTrace();
-
                         }
 
                         try {

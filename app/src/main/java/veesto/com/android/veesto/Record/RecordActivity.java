@@ -28,6 +28,7 @@ public class RecordActivity extends AppCompatActivity implements IRecordPresento
 
     private Button mRecordButton = null;
     private Button mPlayButton = null;
+    private AudioSourcesAdapter audioSourcesAdapter;
 
 
     private IMediaPlayerContoller iMediaPlayerContoller;
@@ -121,11 +122,11 @@ public class RecordActivity extends AppCompatActivity implements IRecordPresento
 
         builderSingle.setTitle("Select audio source");
 
-
-        builderSingle.setAdapter(new AudioSourcesAdapter(this, R.layout.audio_source_card, iMediaPlayerContoller.getAudioSources()), new DialogInterface.OnClickListener() {
+        audioSourcesAdapter = new AudioSourcesAdapter(this, R.layout.audio_source_card, iMediaPlayerContoller.getAudioSources());
+        builderSingle.setAdapter(audioSourcesAdapter, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                iMediaPlayerContoller.setAudioSource(AudioSourceE.fromInteger(which));
+                iMediaPlayerContoller.setAudioSource(audioSourcesAdapter.getMyItem(which));
 
             }
         });

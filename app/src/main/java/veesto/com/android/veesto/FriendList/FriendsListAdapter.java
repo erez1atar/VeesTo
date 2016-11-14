@@ -57,7 +57,6 @@ public class FriendsListAdapter extends ArrayAdapter<String> {
         {
             holder = (ViewHolderFriend)convertView.getTag();
         }
-
         holder.name.setText(friends.get(position));
         return convertView;
     }

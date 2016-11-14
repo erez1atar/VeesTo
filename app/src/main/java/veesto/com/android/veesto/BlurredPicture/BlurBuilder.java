@@ -10,7 +10,8 @@ import android.renderscript.ScriptIntrinsicBlur;
 /**
  * Created by erez on 10/11/2016.
  */
-public class BlurBuilder {
+public class BlurBuilder
+{
     private static final float BITMAP_SCALE = 0.4f;
     private static final float BLUR_RADIUS = 7.5f;
 

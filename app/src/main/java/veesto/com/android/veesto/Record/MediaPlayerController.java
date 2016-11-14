@@ -144,21 +144,21 @@ public class MediaPlayerController implements IMediaPlayerContoller,MediaPlayer.
     }
 
     @Override
-    public void setAudioSource(AudioSourceE source) {
+    public void setAudioSource(AudioSourceE source)
+    {
         audioSource = source.getValue();
-        Log.d("setAudioSource", source.getValue() + "");
     }
 
     @Override
-    public ArrayList<String> getAudioSources() {
-        ArrayList<String> sourcesList = new ArrayList<>();
+    public ArrayList<AudioSourceE> getAudioSources() {
+        ArrayList<AudioSourceE> sourcesList = new ArrayList<>();
         int max = MediaRecorder.getAudioSourceMax();
         for(int i = 0 ; i < max ; i++)
         {
             AudioSourceE audioSourceE = AudioSourceE.fromInteger(i);
             if(audioSourceE != null)
             {
-                sourcesList.add(audioSourceE.toString());
+                sourcesList.add(audioSourceE);
             }
         }
         return sourcesList;

@@ -15,19 +15,24 @@ import veesto.com.android.veesto.R;
 /**
  * Created by erez on 13/11/2016.
  */
-public class AudioSourcesAdapter extends ArrayAdapter<String>{
+public class AudioSourcesAdapter extends ArrayAdapter<AudioSourceE>{
 
-        private final ArrayList<String> sources;
+        private final ArrayList<AudioSourceE> sources;
         private final Activity context;
 
-        public AudioSourcesAdapter(Activity context, int resource,ArrayList<String> sources) {
+        public AudioSourcesAdapter(Activity context, int resource,ArrayList<AudioSourceE> sources) {
             super(context, resource);
             this.context = context;
             this.sources = sources;
         }
 
+        public AudioSourceE getMyItem(int position)
+        {
+            return sources.get(position);
+        }
+
         @Override
-        public String getItem(int position) {
+        public AudioSourceE getItem(int position) {
             return super.getItem(position);
         }
 
@@ -60,7 +65,7 @@ public class AudioSourcesAdapter extends ArrayAdapter<String>{
             }
             Log.d("getView", "position = " + position);
 
-            holder.name.setText(sources.get(position));
+            holder.name.setText(sources.get(position).toString());
 
             return convertView;
         }

@@ -33,7 +33,6 @@ public class WifiListAdapter extends ArrayAdapter<String>
 
     @Override
     public int getCount() {
-        // TODO Auto-generated method stub
         return networks.size();
     }
 
@@ -58,8 +57,6 @@ public class WifiListAdapter extends ArrayAdapter<String>
         {
             holder = (ViewHolderNetwork)convertView.getTag();
         }
-        Log.d("getView", "position = " + position);
-
         holder.name.setText(networks.get(position));
 
         return convertView;

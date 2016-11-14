@@ -50,7 +50,8 @@ public class BlurredPicActivity extends AppCompatActivity implements PicCoveredM
     }
 
     @Override
-    public void onTime() {
+    public void onTime()
+    {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {

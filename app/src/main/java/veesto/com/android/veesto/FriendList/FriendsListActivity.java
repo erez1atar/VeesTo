@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import veesto.com.android.veesto.BlurredImage.ImageActivity;
 import veesto.com.android.veesto.BlurredPicture.BlurredPicActivity;
 import veesto.com.android.veesto.Data.IModel;
 import veesto.com.android.veesto.Location.LocationActivity;
