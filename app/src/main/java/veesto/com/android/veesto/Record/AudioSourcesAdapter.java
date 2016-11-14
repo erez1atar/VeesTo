@@ -42,7 +42,7 @@ public class AudioSourcesAdapter extends ArrayAdapter<AudioSourceE>{
             return sources.size();
         }
 
-        public class ViewHolderSource
+        public static final class ViewHolderSource
         {
             TextView name;
         }

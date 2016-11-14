@@ -36,7 +36,7 @@ public class WifiListAdapter extends ArrayAdapter<String>
         return networks.size();
     }
 
-    public class ViewHolderNetwork
+    public static final class ViewHolderNetwork
     {
         TextView name;
     }
