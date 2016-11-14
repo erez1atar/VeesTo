@@ -8,10 +8,10 @@ import android.widget.Toast;
 import veesto.com.android.veesto.R;
 
 
-public class BlurredPicActivity extends AppCompatActivity implements PicCoveredModel.ProgressListener, MyClock.ClockEventListener
+public class BlurredPicActivity extends AppCompatActivity implements PicCoveredModel.ProgressListener, IBlurredPicPresentor
 {
     private ProgressBar progressBar;
-    private MyClock clock;
+    private IBlurredPicController controller;
     private CircleOverlayView circleOverlayView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,19 +23,19 @@ public class BlurredPicActivity extends AppCompatActivity implements PicCoveredM
 
         circleOverlayView = (CircleOverlayView)findViewById(R.id.cicleOverlay);
         circleOverlayView.setListener(this);
-        clock = new MyClock(this);
+        controller = new BlurredPicController(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        clock.start(5);
+        controller.onStart();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        clock.stop();
+        controller.onStop();
     }
 
     @Override
@@ -50,8 +50,7 @@ public class BlurredPicActivity extends AppCompatActivity implements PicCoveredM
     }
 
     @Override
-    public void onTime()
-    {
+    public void onReady() {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -60,6 +59,5 @@ public class BlurredPicActivity extends AppCompatActivity implements PicCoveredM
                 circleOverlayView.setTouchable(true);
             }
         });
-
     }
 }
