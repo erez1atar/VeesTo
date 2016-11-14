@@ -2,7 +2,6 @@ package veesto.com.android.veesto.BlurredPicture;
 
 import java.lang.ref.WeakReference;
 
-import veesto.com.android.veesto.BlurredPicture.IBlurredPicController;
 
 /**
  * Created by erez on 14/11/2016.

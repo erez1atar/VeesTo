@@ -51,7 +51,7 @@ public class AudioSourcesAdapter extends ArrayAdapter<AudioSourceE>{
         public View getView(int position, View convertView, ViewGroup parent) {
 
             LayoutInflater layoutInflater = context.getLayoutInflater();
-            ViewHolderSource holder = null;
+            ViewHolderSource holder ;
             if (convertView == null) {
                 convertView = layoutInflater.inflate(R.layout.audio_source_card, parent, false);
                 holder  = new ViewHolderSource();

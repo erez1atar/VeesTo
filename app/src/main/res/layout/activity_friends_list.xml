@@ -28,7 +28,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textAlignment="center"
-            android:text="Email"/>
+            android:text="@string/email_text"/>
 
 
     </LinearLayout>
@@ -50,7 +50,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:textAlignment="center"
-        android:text="IMEI"/>
+        android:text="@string/imei_text"/>
 
     </LinearLayout>
 
@@ -72,7 +72,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textAlignment="center"
-            android:text="SN"/>
+            android:text="@string/serial_num_text"/>
 
     </LinearLayout>
 
@@ -82,7 +82,7 @@
         android:layout_weight="0.5"
         android:textAlignment="center"
         android:background="@android:color/darker_gray"
-        android:text="Your Friends"/>
+        android:text="@string/friends_text"/>
 
     <ListView
         android:layout_width="match_parent"
@@ -101,7 +101,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="Blurred Image"
+        android:text="@string/blurred_text"
         style="@style/buttons_style"
         android:id="@+id/move_to_image_screen_button"/>
     <Space
