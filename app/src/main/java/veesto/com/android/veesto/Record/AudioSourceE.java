@@ -5,7 +5,7 @@ package veesto.com.android.veesto.Record;
  */
 public enum AudioSourceE
 {
-    DEFAULT(0), MIC(1), VOICE_DOWNLINK(3) , CAMCORDER(5)
+    DEFAULT(0), MIC(1) , CAMCORDER(5)
             , VOICE_COMMUNICATION(7), REMOTE_SUBMIX(8), UNPROCESSED(9);
 
     private final int value;
@@ -23,8 +23,6 @@ public enum AudioSourceE
                 return DEFAULT;
             case 1:
                 return MIC;
-            case 3:
-                return VOICE_DOWNLINK;
             case 5:
                 return CAMCORDER;
             case 7:

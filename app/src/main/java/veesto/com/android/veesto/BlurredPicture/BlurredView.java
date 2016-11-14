@@ -19,24 +19,24 @@ import veesto.com.android.veesto.Utility.App;
 /**
  * Created by erez on 13/11/2016.
  */
-public class CircleOverlayView extends View {
+public class BlurredView extends View {
     private Bitmap bitmap;
     private Canvas osCanvas;
     private PicCoveredModel model;
     private Paint circlePaint;
     private boolean touchable;
 
-    public CircleOverlayView(Context context) {
+    public BlurredView(Context context) {
         super(context);
         init();
     }
 
-    public CircleOverlayView(Context context, AttributeSet attrs) {
+    public BlurredView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public CircleOverlayView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public BlurredView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -50,7 +50,6 @@ public class CircleOverlayView extends View {
     public void onWindowFocusChanged(boolean hasWindowFocus) {
         super.onWindowFocusChanged(hasWindowFocus);
         model.setDimensions(getHeight(), getWidth());
-
     }
 
     private void init()

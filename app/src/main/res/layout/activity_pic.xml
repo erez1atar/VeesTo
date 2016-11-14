@@ -21,13 +21,13 @@
             android:background="@drawable/dog"
             android:scaleType="fitXY" />
 
-        <veesto.com.android.veesto.BlurredPicture.CircleOverlayView
+        <veesto.com.android.veesto.BlurredPicture.BlurredView
             android:id="@+id/cicleOverlay"
             android:alpha=".75"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        </veesto.com.android.veesto.BlurredPicture.CircleOverlayView>
+        </veesto.com.android.veesto.BlurredPicture.BlurredView>
     </RelativeLayout>
 
     <ProgressBar

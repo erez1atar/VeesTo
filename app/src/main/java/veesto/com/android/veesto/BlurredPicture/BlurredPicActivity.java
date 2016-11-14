@@ -12,7 +12,7 @@ public class BlurredPicActivity extends AppCompatActivity implements PicCoveredM
 {
     private ProgressBar progressBar;
     private IBlurredPicController controller;
-    private CircleOverlayView circleOverlayView;
+    private BlurredView blurredView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,8 +21,8 @@ public class BlurredPicActivity extends AppCompatActivity implements PicCoveredM
         progressBar = (ProgressBar)findViewById(R.id.progress_bar_pic);
         progressBar.setProgress(0);
 
-        circleOverlayView = (CircleOverlayView)findViewById(R.id.cicleOverlay);
-        circleOverlayView.setListener(this);
+        blurredView = (BlurredView)findViewById(R.id.cicleOverlay);
+        blurredView.setListener(this);
         controller = new BlurredPicController(this);
     }
 
@@ -56,7 +56,7 @@ public class BlurredPicActivity extends AppCompatActivity implements PicCoveredM
             public void run() {
                 Toast.makeText(BlurredPicActivity.this, "Click On Image",
                         Toast.LENGTH_LONG).show();
-                circleOverlayView.setTouchable(true);
+                blurredView.setTouchable(true);
             }
         });
     }

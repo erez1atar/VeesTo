@@ -15,15 +15,15 @@ public class PicCoveredModel
     private final int numOfPointsHorizontal = 5;
     private final int numOfPointsVertical = 5;
     private final int numOfPoints = numOfPointsHorizontal * numOfPointsVertical;
-    private int numOfPointsCovered = 0;
+    private volatile int numOfPointsCovered = 0;
     private WeakReference<ProgressListener> listener;
-    private ArrayList<MyPoint> points;
+    private volatile ArrayList<MyPoint> points;
     private Executor executor;
 
     public PicCoveredModel()
     {
         executor = Executors.newFixedThreadPool(5);
-        listener = new WeakReference<ProgressListener>(null);
+        listener = new WeakReference<>(null);
     }
 
     public void setDimensions(double height, double width)
@@ -65,7 +65,8 @@ public class PicCoveredModel
                 ProgressListener progressListener = listener.get();
                 if(progressListener != null)
                 {
-                    progressListener.onProgress(100 * numOfPointsCovered / numOfPoints);
+                    double percentsCovered = 100 * numOfPointsCovered / numOfPoints;
+                    progressListener.onProgress((int)percentsCovered);
                 }
                 Log.d("model", "checkPoint " + 100 * numOfPointsCovered / numOfPoints);
             }
