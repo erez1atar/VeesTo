@@ -26,10 +26,10 @@ public class PicCoveredModel
         listener = new WeakReference<ProgressListener>(null);
     }
 
-    public void setDimensions(double h, double w)
+    public void setDimensions(double height, double width)
     {
-        double interValY = h / numOfPointsHorizontal;
-        double interValX = w / numOfPointsVertical;
+        double interValY = height / numOfPointsHorizontal;
+        double interValX = width / numOfPointsVertical;
         points = new ArrayList<>();
         int currentY = 0;
         int currentX = 0;
@@ -52,6 +52,7 @@ public class PicCoveredModel
                 for(int i = 0 ; i < points.size() ; i++)
                 {
                     MyPoint point = points.get(i);
+                    // check if the point is inside the circle
                     if(point.x < x + radius && point.x > x - radius && point.y < y + radius && point.y > y - radius)
                     {
                         if(! point.covered)
@@ -59,7 +60,6 @@ public class PicCoveredModel
                             ++numOfPointsCovered;
                             point.covered = true;
                         }
-
                     }
                 }
                 ProgressListener progressListener = listener.get();
@@ -73,7 +73,8 @@ public class PicCoveredModel
 
     }
 
-    public void setListener(ProgressListener listener) {
+    public void setListener(ProgressListener listener)
+    {
         this.listener = new WeakReference<>(listener);
     }
 
