@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import veesto.com.android.veesto.R;
 
@@ -26,6 +28,7 @@ public class RecordActivity extends AppCompatActivity implements IRecordPresento
 
     private Button mRecordButton = null;
     private Button mPlayButton = null;
+
 
     private IMediaPlayerContoller iMediaPlayerContoller;
 
@@ -122,7 +125,7 @@ public class RecordActivity extends AppCompatActivity implements IRecordPresento
         builderSingle.setAdapter(new AudioSourcesAdapter(this, R.layout.audio_source_card, iMediaPlayerContoller.getAudioSources()), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                iMediaPlayerContoller.setAudioSource(which);
+                iMediaPlayerContoller.setAudioSource(AudioSourceE.fromInteger(which));
 
             }
         });

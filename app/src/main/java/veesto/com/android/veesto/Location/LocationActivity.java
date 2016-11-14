@@ -47,14 +47,7 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED)
-        {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
-                    PERMISSIONS_REQUEST_WIFI_ID);
-        }
-
+        requestPermissions();
 
         listOfNetworks = (ListView) findViewById(R.id.list_of_networks);
 
@@ -77,6 +70,16 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
         mapFragment.getMapAsync(this);
     }
 
+    private void requestPermissions() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+                    PERMISSIONS_REQUEST_WIFI_ID);
+        }
+    }
+
     @Override
     public void onMapReady(GoogleMap googleMap)
     {
@@ -95,6 +98,7 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
         Location location = locationManager.getLastKnownLocation(provider);
         if(location != null)
         {
+            // move camera to current location
             LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
             googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
@@ -123,6 +127,7 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
             case PERMISSIONS_REQUEST_WIFI_ID: {
                 if (grantResults[0] != PackageManager.PERMISSION_GRANTED)
                 {
+                    // if the request refused, finish
                     finish();
                 }
             }

@@ -10,7 +10,7 @@ public interface IMediaPlayerContoller
     void onRecord();
     void onPlay();
 
-    void setAudioSource(int source);
+    void setAudioSource(AudioSourceE source);
 
     ArrayList<String> getAudioSources();
 

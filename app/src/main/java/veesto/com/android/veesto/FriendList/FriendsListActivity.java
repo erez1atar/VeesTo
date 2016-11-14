@@ -19,6 +19,7 @@ import veesto.com.android.veesto.Utility.App;
 public class FriendsListActivity extends AppCompatActivity {
 
     private IModel iModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +37,10 @@ public class FriendsListActivity extends AppCompatActivity {
 
         ListView listView = (ListView)findViewById(R.id.friends_list);
         listView.setAdapter(new FriendsListAdapter(this,R.layout.friend_card,iModel.getFriends()));
+        initButtons();
+    }
+
+    private void initButtons() {
         Button moveToRecordButton = (Button)findViewById(R.id.move_to_record_screen_button);
         moveToRecordButton.setOnClickListener(new View.OnClickListener() {
             @Override
