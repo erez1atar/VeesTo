@@ -89,6 +89,7 @@ public class RecordActivity extends AppCompatActivity implements IRecordPresento
     @Override
     public void onPause() {
         super.onPause();
+        iMediaPlayerContoller.stopProcess();
     }
 
     @Override

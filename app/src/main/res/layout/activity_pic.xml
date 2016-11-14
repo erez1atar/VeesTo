@@ -18,12 +18,12 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/dog"
+            android:background="@drawable/text1"
             android:scaleType="fitXY" />
 
         <veesto.com.android.veesto.BlurredPicture.BlurredView
             android:id="@+id/cicleOverlay"
-            android:alpha=".75"
+            android:alpha="0.75"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

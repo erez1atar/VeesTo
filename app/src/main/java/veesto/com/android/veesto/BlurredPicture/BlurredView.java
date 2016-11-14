@@ -81,7 +81,7 @@ public class BlurredView extends View {
     protected void createWindowFrame()
     {
         // put a blurred pic on canvas
-        bitmap = BlurBuilder.blur(App.getInstance(), BitmapFactory.decodeResource(App.getInstance().getResources(), R.drawable.dog));
+        bitmap = BlurBuilder.blur(App.getInstance(), BitmapFactory.decodeResource(App.getInstance().getResources(), R.drawable.text1));
         bitmap = Bitmap.createScaledBitmap(bitmap, getWidth(), getHeight(), true);
         osCanvas = new Canvas(bitmap);
 

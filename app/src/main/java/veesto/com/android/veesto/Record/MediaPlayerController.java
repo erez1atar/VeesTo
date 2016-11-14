@@ -73,6 +73,7 @@ public class MediaPlayerController implements IMediaPlayerContoller,MediaPlayer.
         }
     }
 
+
     private void startRecording() {
         if(mStartPlaying || mStartRecording)
         {
@@ -140,6 +141,18 @@ public class MediaPlayerController implements IMediaPlayerContoller,MediaPlayer.
         else
         {
             stopPlaying();
+        }
+    }
+
+    @Override
+    public void stopProcess() {
+        if(mStartPlaying)
+        {
+            stopPlaying();
+        }
+        if(mStartRecording)
+        {
+            stopRecording();
         }
     }
 

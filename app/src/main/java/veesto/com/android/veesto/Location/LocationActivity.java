@@ -1,8 +1,10 @@
 package veesto.com.android.veesto.Location;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
@@ -88,6 +90,14 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
         mMap.setMyLocationEnabled(true);
 
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if ( !locationManager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
+            showNoGPSMessage();
+        }
+        updateCurrentLocation(locationManager);
+
+    }
+
+    private void updateCurrentLocation(LocationManager locationManager) {
         Criteria criteria = new Criteria();
         String provider = locationManager.getBestProvider(criteria, true);
 
@@ -95,15 +105,20 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
         {
             return;
         }
-        Location location = locationManager.getLastKnownLocation(provider);
-        if(location != null)
+        Location currentLocation = locationManager.getLastKnownLocation(provider);
+        // try another way to get location
+        if(currentLocation == null)
+        {
+            currentLocation = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+        }
+        // if the current location available
+        if(currentLocation != null)
         {
             // move camera to current location
-            LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-            googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+            LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
         }
-
     }
 
 
@@ -159,8 +174,27 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                listOfNetworks.setAdapter(new WifiListAdapter(LocationActivity.this,R.layout.netword_card,networksName));
+                listOfNetworks.setAdapter(new WifiListAdapter(LocationActivity.this, R.layout.netword_card, networksName));
             }
         });
+    }
+
+    public void showNoGPSMessage() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                        
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        dialog.cancel();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
     }
 }
